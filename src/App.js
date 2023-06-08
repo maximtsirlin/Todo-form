@@ -1,17 +1,40 @@
-import { useState } from 'react';
-import CountLabel from './CountLabel.js';
+import { useState } from 'react'
+import ToDo from './ToDo'
+import ToDoForm from './ToDoForm'
 
-export default function App() {
-  const [count, setCount] = useState(0);
+function App() {
+  const [todos, setTodos] = useState([])
+
+  const addTask = (userInput) => {
+
+  }
+
+  const removeTask = (id) => {
+
+  }
+
+  const handleToggle = (id) => {
+
+  }
+
   return (
-    <>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-      <button onClick={() => setCount(count - 1)}>
-        Decrement
-      </button>
-      <CountLabel count={count} />
-    </>
+    <div className="App">
+      <header>
+        <h1>Список задач: {todos.length}</h1>
+      </header>
+      <ToDoForm addTask={addTask} />
+      {todos.map((todo) => {
+        return (
+          <ToDo
+            todo={todo}
+            key={todo.id}
+            toggleTask={handleToggle}
+            removeTask={removeTask}
+            />
+        )
+      })}
+    </div>
   );
 }
+
+export default App;
