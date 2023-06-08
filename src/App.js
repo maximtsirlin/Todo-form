@@ -6,7 +6,14 @@ function App() {
   const [todos, setTodos] = useState([])
 
   const addTask = (userInput) => {
-
+    if(userInput) {
+      const newItem = {
+        id: Math.random().toString(36).substr(2,9),
+        task: userInput,
+        complete: false
+      }
+      setTodos([...todos, newItem])
+    }
   }
 
   const removeTask = (id) => {
